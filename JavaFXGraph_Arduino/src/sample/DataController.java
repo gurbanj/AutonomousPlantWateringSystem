@@ -31,7 +31,7 @@ public class DataController implements SerialPortMessageListenerWithExceptions {
     public void serialEvent(SerialPortEvent serialPortEvent) {
         // TODO: Implement this method. Refer to the documentation for more details.
 
-        if((serialPortEvent.equals(SerialPort.LISTENING_EVENT_DATA_RECEIVED))) {
+        if((serialPortEvent.getEventType() == (SerialPort.LISTENING_EVENT_DATA_RECEIVED))) {
             var data = serialPortEvent.getReceivedData();
             var dataInt = ByteBuffer.wrap(data).getInt();
             var current = System.currentTimeMillis();
